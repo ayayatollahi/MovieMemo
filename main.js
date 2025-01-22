@@ -1,4 +1,5 @@
 import { fetchProducts, apiConfig } from "./src/network.js";
+import { addToJournal, addToCart } from "./src/storage.js";
 
 const search = document.querySelector("#search-bar");
 const movieContainer = document.getElementById("movie-list");
@@ -9,6 +10,12 @@ let movies = []; // Initialize an empty array
 document.getElementById("menu-toggle").addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
+
+let favorites = [];
+
+function isInTheList(element) {
+  return favorites.some((e) => e === element);
+}
 
 async function getPopularMovies() {
   const response = await fetch(
@@ -47,7 +54,7 @@ async function displayMovies(input) {
       movieContainer.innerHTML = "";
 
       if (!filteredMovies.length) {
-        movieContainer.innerHTML = `<p>No movies found matching "${input}"</p>`;
+        movieContainer.innerHTML = `<p class="text-white">No movies found matching "${input}"</p>`;
       } else {
         filteredMovies.forEach((movie) => {
           const movieCard = createMovieCard(movie);
@@ -65,6 +72,7 @@ function createMovieCard(movie) {
   const movieCard = document.createElement("div");
   movieCard.className =
     "bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105";
+
   movieCard.innerHTML = `
     <img
       src="${apiConfig.imageBaseUrl + movie.poster_path}"
@@ -82,13 +90,29 @@ function createMovieCard(movie) {
       <p class="text-sm text-gray-600 mb-4">
         <span class="font-semibold">Rating:</span> ${movie.vote_average}
       </p>
-      <button
+      <button id="add-button-${movie.id}"
         class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
       >
-        Add
+        Add to Journal
       </button>
     </div>
   `;
+
+  // Attach event listener to the button to add movie to journal
+  const addButton = movieCard.querySelector(`#add-button-${movie.id}`);
+  addButton.addEventListener("click", () => {
+    addToJournal(movie);
+    favorites.push(movie);
+    console.log(favorites);
+    //const movieInJournal = movies.some(
+    // (storedMovie) => storedMovie.id === movie.id
+    //);
+    const btn = document.getElementById(`add-button-${movie.id}`);
+    btn.style.backgroundColor = "#28a745";
+
+    alert(`Added "${movie.title}" to your Journal!`);
+  });
+
   return movieCard;
 }
 
