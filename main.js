@@ -4,7 +4,7 @@ import { addToJournal, addToCart } from "./src/storage.js";
 const search = document.querySelector("#search-bar");
 const movieContainer = document.getElementById("movie-list");
 const menu = document.getElementById("mobile-menu");
-const movieJournal = JSON.parse(localStorage.getItem("journal"));
+const movieJournal = JSON.parse(localStorage.getItem("journal")) || [];
 
 let movies = []; // Initialize an empty array
 
