@@ -4,6 +4,7 @@ import { addToJournal, addToCart } from "./src/storage.js";
 const search = document.querySelector("#search-bar");
 const movieContainer = document.getElementById("movie-list");
 const menu = document.getElementById("mobile-menu");
+const movieJournal = JSON.parse(localStorage.getItem("journal"));
 
 let movies = []; // Initialize an empty array
 
@@ -11,10 +12,14 @@ document.getElementById("menu-toggle").addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
 
-let favorites = [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
 function isInTheList(element) {
   return favorites.some((e) => e === element);
+}
+
+function saveFavorites(movieId) {
+  localStorage.setItem(String(movieId), JSON.stringify(favorites));
 }
 
 async function getPopularMovies() {
@@ -36,7 +41,7 @@ async function fetchMovies() {
 
 async function displayMovies(input) {
   if (!movieContainer) return;
-
+  let addButton;
   try {
     if (!input) {
       // Display all movies if input is empty
@@ -44,6 +49,12 @@ async function displayMovies(input) {
       movies.forEach((movie) => {
         const movieCard = createMovieCard(movie);
         movieContainer.appendChild(movieCard);
+        addButton = movieCard.querySelector(`#add-button-${movie.id}`);
+        addButton.style.backgroundColor = movieJournal.find(
+          (fav) => fav.id === movie.id
+        )
+          ? "#28A745"
+          : "bg-yellow-400";
       });
     } else {
       // Filter movies based on input
@@ -103,12 +114,15 @@ function createMovieCard(movie) {
   addButton.addEventListener("click", () => {
     addToJournal(movie);
     favorites.push(movie);
-    console.log(favorites);
+    saveFavorites(movie.id);
+
     //const movieInJournal = movies.some(
     // (storedMovie) => storedMovie.id === movie.id
     //);
     const btn = document.getElementById(`add-button-${movie.id}`);
-    btn.style.backgroundColor = "#28a745";
+    if (isInTheList(movie)) {
+      btn.style.backgroundColor = "#28a745";
+    }
 
     alert(`Added "${movie.title}" to your Journal!`);
   });
