@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Diary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-b from-gray-800 via-gray-900 to-black">
+    <nav class="bg-gray-800 text-white shadow-md">
+      <div
+        class="container mx-auto px-4 py-3 flex justify-between items-center"
+      >
+        <!-- Logo / Branding -->
+        <a href="index.html" class="text-2xl font-bold hover:text-yellow-400">
+          🎥 Movie Diary
+        </a>
+
+        <!-- Search Bar (centered, with icon, button, and max-width) -->
+        <form class="hidden md:flex flex-grow justify-center mx-8">
+          <div class="relative w-full max-w-md flex">
+            <input
+              id="search-bar"
+              type="search"
+              placeholder="Search movies..."
+              class="w-full px-4 py-2 pl-10 rounded-l-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+            <svg
+              class="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 10a6 6 0 100-12 6 6 0 000 12zM21 21l-4.35-4.35"
+              />
+            </svg>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold rounded-r-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+
+        <!-- Links (for Desktop) -->
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html" class="hover:text-yellow-400">Home</a>
+          <a href="journal.html" class="hover:text-yellow-400">Journal</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="menu-toggle"
+          class="md:hidden focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        >
+          <svg
+            class="h-6 w-6"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-gray-700">
+        <form class="p-4">
+          <div class="relative flex">
+            <input
+              type="text"
+              placeholder="Search movies..."
+              class="w-full px-4 py-2 pl-10 rounded-l-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            />
+            <svg
+              class="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 10a6 6 0 100-12 6 6 0 000 12zM21 21l-4.35-4.35"
+              />
+            </svg>
+            <button
+              type="submit"
+              class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold rounded-r-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+        <a href="index.html" class="block px-4 py-2 hover:bg-gray-600">Home</a>
+        <a href="journal.html" class="block px-4 py-2 hover:bg-gray-600"
+          >Journal</a
+        >
+      </div>
+    </nav>
+
+    <main>
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-8 mb-8 text-center bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-transparent bg-clip-text"
+      >
+        Movie Collection
+      </h1>
+      <div
+        id="movie-list"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4"
+      >
+        <!-- Card 1 -->
+        <!-- <div
+          id="1"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Underworld.jpg"
+            alt="Underworld"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Underworld</h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Len Wiseman
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Kate Beckinsale, Scott
+              Speedman, Michael Sheen
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="2"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Avatar.jpg"
+            alt="Avatar: The Way of Water"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              Avatar: The Way of Water
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> James Cameron
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Zoe Saldaña, Sigourney
+              Weaver, Kate Winslet
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="3"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Terminator.jpg"
+            alt="Terminator 2: Judgement Day"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              Terminator 2: Judgement Day
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> James Cameron
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Arnold Schwarzenegger,
+              Linda Hamilton, Robert Patrick
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="4"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Prometheus.jpg"
+            alt="Prometheus"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Prometheus</h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Ridley Scott
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Noomi Rapace, Michael
+              Fassbender, Charlize Theron
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="5"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/CrimsonRivers.jpg"
+            alt="Les Rivières pourpres"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              Les Rivières pourpres
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Mathieu Kassovitz
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Jean Reno, Vincent Cassel
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> French
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="6"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/DaVinciCode.jpg"
+            alt="The Da Vinci Code"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              The Da Vinci Code
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Ron Howard
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Tom Hanks, Audrey Tautou,
+              Ian McKellen, Jürgen Prochnow, Jean Reno
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        
+        <div
+          id="7"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Pirates.jpg"
+            alt="Pirates of the Caribbean: Dead Man's Chest"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              Pirates of the Caribbean: Dead Man's Chest
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Gore Verbinski
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Johnny Depp, Orlando
+              Bloom, Keira Knightley
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="8"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/StarWars.jpg"
+            alt="Star Wars: Episode III – Revenge of the Sith"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">
+              Star Wars: Episode III – Revenge of the Sith
+            </h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> George Lucas
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Ewan McGregor, Natalie
+              Portman, Samuel L. Jackson
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div>
+
+        
+        <div
+          id="9"
+          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
+        >
+          <img
+            src="images/Crank.jpg"
+            alt="Crank"
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Crank</h2>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Director:</span> Mark Neveldine, Brian
+              Taylor
+            </p>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-semibold">Cast:</span> Jason Statham, Amy Smart,
+              Jose Pablo Cantillo
+            </p>
+            <p class="text-sm text-gray-600 mb-4">
+              <span class="font-semibold">Language:</span> English
+            </p>
+            <button
+              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
+            >
+              Add
+            </button>
+          </div>
+        </div> -->
+      </div>
+    </main>
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-10">
+      <div class="max-w-7xl mx-auto px-4">
+        <!-- Grid Layout -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <!-- Column 1: About -->
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-3">About</h3>
+            <p class="text-sm">
+              Movie Diary helps you keep track of your favorite movies and stay
+              updated with popular films. Add notes, build your journal, and
+              explore new content!
+            </p>
+          </div>
+
+          <!-- Column 2: Links -->
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a href="index.html" class="hover:text-yellow-400">Home</a>
+              </li>
+              <li>
+                <a href="journal.html" class="hover:text-yellow-400">Journal</a>
+              </li>
+              <li>
+                <a href="#about" class="hover:text-yellow-400">About Us</a>
+              </li>
+              <li>
+                <a href="#contact" class="hover:text-yellow-400">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Social Media -->
+          <div>
+            <h3 class="text-lg font-semibold text-white mb-3">Follow Us</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="text-gray-400 hover:text-yellow-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.675 0h-21.35c-.733 0-1.325.592-1.325 1.325v21.35c0 .733.592 1.325 1.325 1.325h11.475v-9.294h-3.13v-3.622h3.13v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.243h-1.917c-1.504 0-1.796.715-1.796 1.763v2.31h3.592l-.467 3.622h-3.125v9.294h6.125c.733 0 1.325-.592 1.325-1.325v-21.35c0-.733-.592-1.325-1.325-1.325z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-yellow-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M24 4.557c-.883.392-1.833.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.956-2.178-1.555-3.594-1.555-2.72 0-4.92 2.2-4.92 4.917 0 .385.043.76.127 1.122-4.09-.205-7.719-2.165-10.148-5.144-.423.724-.666 1.562-.666 2.457 0 1.697.863 3.192 2.176 4.068-.801-.026-1.555-.246-2.213-.616v.062c0 2.37 1.685 4.348 3.918 4.794-.41.112-.844.172-1.292.172-.316 0-.623-.03-.924-.087.623 1.943 2.432 3.357 4.577 3.396-1.675 1.312-3.784 2.096-6.078 2.096-.395 0-.786-.023-1.17-.067 2.168 1.389 4.742 2.2 7.514 2.2 9.015 0 13.946-7.468 13.946-13.946 0-.21-.005-.42-.014-.63.957-.691 1.786-1.56 2.441-2.549z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-yellow-400">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 2.163c6.627 0 12 5.373 12 12s-5.373 12-12 12-12-5.373-12-12 5.373-12 12-12zm0 1.838c-5.627 0-10.162 4.535-10.162 10.162s4.535 10.162 10.162 10.162 10.162-4.535 10.162-10.162-4.535-10.162-10.162-10.162zm0 2.512c1.044 0 1.895.851 1.895 1.895s-.851 1.895-1.895 1.895-1.895-.851-1.895-1.895.851-1.895 1.895-1.895zm0 12.182c-2.485 0-4.727-1.005-6.364-2.642.02-1.807 3.725-2.797 6.364-2.797s6.344.99 6.364 2.797c-1.637 1.637-3.879 2.642-6.364 2.642z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-gray-700 mt-6 pt-4 text-center text-sm">
+          <p>© 2025 Movie Diary. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to JavaScript -->
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
