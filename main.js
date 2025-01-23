@@ -50,6 +50,9 @@ async function displayMovies(input) {
         const movieCard = createMovieCard(movie);
         movieContainer.appendChild(movieCard);
         addButton = movieCard.querySelector(`#add-button-${movie.id}`);
+        if (movieJournal === null) {
+          return;
+        }
         addButton.style.backgroundColor = movieJournal.find(
           (fav) => fav.id === movie.id
         )
