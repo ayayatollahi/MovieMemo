@@ -6,7 +6,9 @@
     <title>Movie Diary</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+  <!-- Background gradient for the entire page -->
   <body class="bg-gradient-to-b from-gray-800 via-gray-900 to-black">
+    <!-- Navigation Bar -->
     <nav class="bg-gray-800 text-white shadow-md">
       <div
         class="container mx-auto px-4 py-3 flex justify-between items-center"
@@ -25,6 +27,7 @@
               placeholder="Search movies..."
               class="w-full px-4 py-2 pl-10 rounded-l-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
+            <!-- Search Icon -->
             <svg
               class="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -39,6 +42,7 @@
                 d="M10 10a6 6 0 100-12 6 6 0 000 12zM21 21l-4.35-4.35"
               />
             </svg>
+            <!-- Search Button -->
             <button
               type="submit"
               class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold rounded-r-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -59,6 +63,7 @@
           id="menu-toggle"
           class="md:hidden focus:outline-none focus:ring-2 focus:ring-yellow-400"
         >
+          <!-- Hamburger Icon -->
           <svg
             class="h-6 w-6"
             xmlns="http://www.w3.org/2000/svg"
@@ -76,8 +81,9 @@
         </button>
       </div>
 
-      <!-- Mobile Menu -->
+      <!-- Mobile Menu (hidden by default) -->
       <div id="mobile-menu" class="hidden md:hidden bg-gray-700">
+        <!-- Mobile Search Bar -->
         <form class="p-4">
           <div class="relative flex">
             <input
@@ -85,6 +91,7 @@
               placeholder="Search movies..."
               class="w-full px-4 py-2 pl-10 rounded-l-lg text-black focus:outline-none focus:ring-2 focus:ring-yellow-400"
             />
+            <!-- Search Icon -->
             <svg
               class="absolute top-1/2 left-3 transform -translate-y-1/2 h-5 w-5 text-gray-400"
               xmlns="http://www.w3.org/2000/svg"
@@ -99,6 +106,7 @@
                 d="M10 10a6 6 0 100-12 6 6 0 000 12zM21 21l-4.35-4.35"
               />
             </svg>
+            <!-- Search Button -->
             <button
               type="submit"
               class="px-4 py-2 bg-yellow-400 text-gray-800 font-semibold rounded-r-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -107,6 +115,7 @@
             </button>
           </div>
         </form>
+        <!-- Mobile Menu Links -->
         <a href="index.html" class="block px-4 py-2 hover:bg-gray-600">Home</a>
         <a href="journal.html" class="block px-4 py-2 hover:bg-gray-600"
           >Journal</a
@@ -114,303 +123,29 @@
       </div>
     </nav>
 
+    <!-- Main Content -->
     <main>
+      <!-- Page Heading -->
       <h1
         class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mt-8 mb-8 text-center bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 text-transparent bg-clip-text"
       >
         Movie Collection
       </h1>
+      <!-- Movie List Grid -->
       <div
         id="movie-list"
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-7xl mx-auto px-4"
       >
-        <!-- Card 1 -->
-        <!-- <div
-          id="1"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Underworld.jpg"
-            alt="Underworld"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">Underworld</h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Len Wiseman
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Kate Beckinsale, Scott
-              Speedman, Michael Sheen
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="2"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Avatar.jpg"
-            alt="Avatar: The Way of Water"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              Avatar: The Way of Water
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> James Cameron
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Zoe Saldaña, Sigourney
-              Weaver, Kate Winslet
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="3"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Terminator.jpg"
-            alt="Terminator 2: Judgement Day"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              Terminator 2: Judgement Day
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> James Cameron
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Arnold Schwarzenegger,
-              Linda Hamilton, Robert Patrick
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="4"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Prometheus.jpg"
-            alt="Prometheus"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">Prometheus</h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Ridley Scott
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Noomi Rapace, Michael
-              Fassbender, Charlize Theron
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="5"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/CrimsonRivers.jpg"
-            alt="Les Rivières pourpres"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              Les Rivières pourpres
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Mathieu Kassovitz
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Jean Reno, Vincent Cassel
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> French
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="6"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/DaVinciCode.jpg"
-            alt="The Da Vinci Code"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              The Da Vinci Code
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Ron Howard
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Tom Hanks, Audrey Tautou,
-              Ian McKellen, Jürgen Prochnow, Jean Reno
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-        
-        <div
-          id="7"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Pirates.jpg"
-            alt="Pirates of the Caribbean: Dead Man's Chest"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              Pirates of the Caribbean: Dead Man's Chest
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Gore Verbinski
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Johnny Depp, Orlando
-              Bloom, Keira Knightley
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="8"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/StarWars.jpg"
-            alt="Star Wars: Episode III – Revenge of the Sith"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">
-              Star Wars: Episode III – Revenge of the Sith
-            </h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> George Lucas
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Ewan McGregor, Natalie
-              Portman, Samuel L. Jackson
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div>
-
-        
-        <div
-          id="9"
-          class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105"
-        >
-          <img
-            src="images/Crank.jpg"
-            alt="Crank"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-6">
-            <h2 class="text-xl font-bold text-gray-800 mb-2">Crank</h2>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Director:</span> Mark Neveldine, Brian
-              Taylor
-            </p>
-            <p class="text-sm text-gray-600 mb-2">
-              <span class="font-semibold">Cast:</span> Jason Statham, Amy Smart,
-              Jose Pablo Cantillo
-            </p>
-            <p class="text-sm text-gray-600 mb-4">
-              <span class="font-semibold">Language:</span> English
-            </p>
-            <button
-              class="w-full bg-yellow-400 text-gray-800 font-bold py-2 rounded-lg hover:bg-yellow-500 transition"
-            >
-              Add
-            </button>
-          </div>
-        </div> -->
+        <!-- Movie cards will be dynamically inserted here -->
       </div>
     </main>
+
+    <!-- Footer -->
     <footer class="bg-gray-800 text-gray-400 py-6 mt-10">
       <div class="max-w-7xl mx-auto px-4">
-        <!-- Grid Layout -->
+        <!-- Grid Layout for Footer Content -->
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <!-- Column 1: About -->
+          <!-- Column 1: About Section -->
           <div>
             <h3 class="text-lg font-semibold text-white mb-3">About</h3>
             <p class="text-sm">
@@ -420,7 +155,7 @@
             </p>
           </div>
 
-          <!-- Column 2: Links -->
+          <!-- Column 2: Quick Links -->
           <div>
             <h3 class="text-lg font-semibold text-white mb-3">Quick Links</h3>
             <ul class="space-y-2">
@@ -439,10 +174,11 @@
             </ul>
           </div>
 
-          <!-- Column 3: Social Media -->
+          <!-- Column 3: Social Media Links -->
           <div>
             <h3 class="text-lg font-semibold text-white mb-3">Follow Us</h3>
             <div class="flex space-x-4">
+              <!-- Facebook Icon -->
               <a href="#" class="text-gray-400 hover:text-yellow-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -455,6 +191,7 @@
                   />
                 </svg>
               </a>
+              <!-- Twitter Icon -->
               <a href="#" class="text-gray-400 hover:text-yellow-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -467,6 +204,7 @@
                   />
                 </svg>
               </a>
+              <!-- Instagram Icon -->
               <a href="#" class="text-gray-400 hover:text-yellow-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -483,6 +221,7 @@
           </div>
         </div>
 
+        <!-- Footer Copyright Notice -->
         <div class="border-t border-gray-700 mt-6 pt-4 text-center text-sm">
           <p>© 2025 Movie Diary. All rights reserved.</p>
         </div>

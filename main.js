@@ -1,27 +1,33 @@
+// Import necessary functions and configurations
 import { fetchProducts, apiConfig } from "./src/network.js";
 import { addToJournal, addToCart } from "./src/storage.js";
 
+// DOM elements
 const search = document.querySelector("#search-bar");
 const movieContainer = document.getElementById("movie-list");
 const menu = document.getElementById("mobile-menu");
-const movieJournal = JSON.parse(localStorage.getItem("journal")) || [];
 
-let movies = []; // Initialize an empty array
+// Initialize movie journal and favorites from localStorage or empty arrays
+let movieJournal = JSON.parse(localStorage.getItem("journal")) || [];
+let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+let movies = []; // Initialize an empty array to store fetched movies
 
+// Toggle mobile menu visibility
 document.getElementById("menu-toggle").addEventListener("click", () => {
   menu.classList.toggle("hidden");
 });
 
-let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
+// Check if an element is in the favorites list
 function isInTheList(element) {
   return favorites.some((e) => e === element);
 }
 
+// Save favorites to localStorage
 function saveFavorites(movieId) {
   localStorage.setItem(String(movieId), JSON.stringify(favorites));
 }
 
+// Fetch popular movies from the API
 async function getPopularMovies() {
   const response = await fetch(
     `${apiConfig.tmdbBaseUrl}/movie/popular?api_key=${apiConfig.tmdbApiKey}`
@@ -39,9 +45,10 @@ async function fetchMovies() {
   }
 }
 
+// Display movies based on the input filter
 async function displayMovies(input) {
   if (!movieContainer) return;
-  let addButton;
+
   try {
     if (!input) {
       // Display all movies if input is empty
@@ -49,10 +56,10 @@ async function displayMovies(input) {
       movies.forEach((movie) => {
         const movieCard = createMovieCard(movie);
         movieContainer.appendChild(movieCard);
-        addButton = movieCard.querySelector(`#add-button-${movie.id}`);
-        if (movieJournal === null) {
-          return;
-        }
+        const addButton = movieCard.querySelector(`#add-button-${movie.id}`);
+        if (movieJournal === null) return;
+
+        // Change button color if movie is in the journal
         addButton.style.backgroundColor = movieJournal.find(
           (fav) => fav.id === movie.id
         )
@@ -82,6 +89,7 @@ async function displayMovies(input) {
   }
 }
 
+// Create a movie card element
 function createMovieCard(movie) {
   const movieCard = document.createElement("div");
   movieCard.className =
@@ -119,9 +127,7 @@ function createMovieCard(movie) {
     favorites.push(movie);
     saveFavorites(movie.id);
 
-    //const movieInJournal = movies.some(
-    // (storedMovie) => storedMovie.id === movie.id
-    //);
+    // Change button color if movie is in the journal
     const btn = document.getElementById(`add-button-${movie.id}`);
     if (isInTheList(movie)) {
       btn.style.backgroundColor = "#28a745";
@@ -133,7 +139,7 @@ function createMovieCard(movie) {
   return movieCard;
 }
 
-// Debounce search input
+// Debounce search input to improve performance
 let debounceTimeout;
 search.addEventListener("input", () => {
   clearTimeout(debounceTimeout);
